@@ -1,19 +1,22 @@
 using UnityEngine;
+using System.Collections;
 
 public class PlayerMovement : MonoBehaviour
 {
-    public float speed = 10.2f;
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        int healthPoints = 54;
-        Debug.Log(speed);
-        Debug.Log(healthPoints);
-    }
+    [SerializeField] private float speed = 10.2f;
 
-    // Update is called once per frame
-    void Update()
+    [SerializeField] private Rigidbody rbPlayer;
+
+    void FixedUpdate()
     {
         
+        if (Input.GetKey(KeyCode.Q))
+        {
+            rbPlayer.AddForce(-speed, 0.0f, speed);
+        }
+        if (Input.GetKey(KeyCode.D))
+        {
+            rbPlayer.AddForce(speed, 0.0f, speed);
+        }
     }
 }
